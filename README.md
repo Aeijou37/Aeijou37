@@ -13,7 +13,9 @@ I am interested in applying deep learning and visual perception algorithms to re
 * Single-view and Multi-view 3D Reconstruction
 * RGB-D Vision
 * Point Cloud Processing
-* Industrial X-ray Defect Detection
+* Industrial Defect Detection (EBeam / X-ray)
+* Long-tail & Imbalanced Classification
+* Self-supervised & Multimodal Pre-training (DINOv2 / CLIP / SigLIP)
 * Lightweight Model Deployment
 * RAG-based Local Knowledge Systems
 
@@ -32,6 +34,7 @@ I am interested in applying deep learning and visual perception algorithms to re
 * TensorFlow
 * MMDetection
 * Ultralytics YOLO
+* timm
 
 ### Computer Vision
 
@@ -42,6 +45,13 @@ I am interested in applying deep learning and visual perception algorithms to re
 * 3D Reconstruction
 * Point Cloud Feature Extraction
 * RGB-D Perception
+
+### Long-tail & Pre-training
+
+* LDAM Loss
+* DINOv2 / DINOv3
+* CLIP / SigLIP
+* Fine-tuning Strategies (Layer Freezing)
 
 ### AI Agent & RAG
 
@@ -55,9 +65,11 @@ I am interested in applying deep learning and visual perception algorithms to re
 
 ## 💼 Experience
 
-- **CXMT** — Deep Learning Algorithm Intern (2026.07 - Present)
-- **iFLYTEK** — Industrial AI Algorithm Engineer Intern (2026.05 - 2026.06)
-- **Anhui Huipeng New Energy** — Engineering Intern (2023.08 - 2023.09)
+* **CXMT** — Deep Learning Algorithm Intern (2026.07 - Present)
+* **iFLYTEK** — Industrial AI Algorithm Engineer Intern (2026.05 - 2026.06)
+* **Anhui Huipeng New Energy** — Engineering Intern (2023.08 - 2023.09)
+
+---
 
 ## 🚀 Selected Projects
 
@@ -78,6 +90,9 @@ Results:
 * Achieved over 99% recognition accuracy.
 * Reached gluing trajectory positioning accuracy within 1 mm.
 * Completed the full pipeline from data collection, algorithm development, to production-line validation.
+* 2 granted patents (as first & second author).
+
+> 🔗 Code available upon request (university project, pending advisor approval)
 
 ---
 
@@ -89,8 +104,10 @@ Main work:
 
 * Designed image preprocessing and enhancement methods for large-resolution X-ray images.
 * Improved small-defect detection under small-sample conditions.
-* Optimized detection and segmentation models for industrial defect analysis.
+* Optimized RF-DETR detection and segmentation models (mAP +1.8%).
 * Built a rule-based pipeline from defect-level results to workpiece-level qualitative assessment.
+
+> ⚠️ Code unavailable due to company NDA. Happy to discuss the technical approach in detail.
 
 ---
 
@@ -105,13 +122,17 @@ Main work:
 * Designed constrained system prompts and post-processing mechanisms to improve response quality.
 * Supported local model deployment and multi-turn academic document QA.
 
+> 🔗 Repository: [rag-academic-qa-agent](https://github.com/Aeijou37/rag-academic-qa-agent)
+
 ---
 
 ## 📚 Publications & Patents
 
-* Patent: Vision-based single-line laser shoe sole 3D gluing contour extraction system and method.
-* Patent: Point cloud generation method for shoe sole gluing area based on RGB-D instance segmentation.
-* Paper under review: Instance Segmentation Network Based on Dynamic Routing and Topological Aggregation.
+* Patent (First Author, granted): Vision-based single-line laser shoe sole 3D gluing contour extraction system and method. [CN-XXXXXXX](https://patents.google.com/?q=CN-XXXXXXX)
+* Patent (Second Author, granted): Point cloud generation method for shoe sole gluing area based on RGB-D instance segmentation. [CN-XXXXXXX](https://patents.google.com/?q=CN-XXXXXXX)
+* Paper (First Author, under review): Instance Segmentation Network Based on Dynamic Routing and Topological Aggregation.
+
+> 📌 Patent numbers to be updated once verified.
 
 ---
 
@@ -132,15 +153,21 @@ Graduation Project: Point-wise Rotation-invariant Feature Extraction for Point C
 
 ---
 
-## 📌 Current Focus
+## 🔭 Currently Working On
 
-I am currently working on:
+* EBeam wafer defect classification at CXMT (DINOv2 / SigLIP + LDAM, 99.45% accuracy)
+* Single-view 3D reconstruction for industrial trajectories
+* RAG-based academic QA agent (LangChain + Chroma)
+* Lightweight model deployment for edge devices
 
-* Industrial visual inspection algorithms
-* Instance segmentation for complex industrial scenes
-* Single-view 3D reconstruction
-* Lightweight model deployment
-* AI Agent and RAG-based local knowledge systems
+---
+
+## 📊 GitHub Stats
+
+<p>
+  <img height="160px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aeijou37&layout=compact&theme=default" />
+  <img height="160px" src="https://github-readme-stats.vercel.app/api?username=Aeijou37&show_icons=true&theme=default" />
+</p>
 
 ---
 
@@ -148,3 +175,5 @@ I am currently working on:
 
 * GitHub: [Aeijou37](https://github.com/Aeijou37)
 * Email: [Leeguojiea@gmail.com](mailto:Leeguojiea@gmail.com)
+
+> Always open to discussions on industrial AI, computer vision, and RAG systems.
