@@ -66,7 +66,7 @@ I am interested in applying deep learning and visual perception algorithms to re
 ## 💼 Experience
 
 * **CXMT** — Deep Learning Algorithm Intern (2026.07 - Present)
-* **iFLYTEK** — Industrial AI Algorithm Engineer Intern (2026.05 - 2026.06)
+* **iFLYTEK** — Industrial AI Algorithm Engineer Intern (2026.05 - 2026.07)
 * **Anhui Huipeng New Energy** — Engineering Intern (2023.08 - 2023.09)
 
 ---
