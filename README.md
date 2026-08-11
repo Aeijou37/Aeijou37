@@ -128,11 +128,11 @@ Main work:
 
 ## 📚 Publications & Patents
 
-* Patent (First Author, granted): Vision-based single-line laser shoe sole 3D gluing contour extraction system and method. [CN-XXXXXXX](https://patents.google.com/?q=CN-XXXXXXX)
-* Patent (Second Author, granted): Point cloud generation method for shoe sole gluing area based on RGB-D instance segmentation. [CN-XXXXXXX](https://patents.google.com/?q=CN-XXXXXXX)
+* Patent (First Inventor, published): Vision-based single-line laser shoe sole 3D gluing contour extraction system and method. [CN120852582A](https://patents.google.com/patent/CN120852582A)
+* Patent (Second Inventor, granted): Point cloud generation method for shoe sole gluing area based on RGB-D instance segmentation. [CN120823398B](https://patents.google.com/patent/CN120823398B)
 * Paper (First Author, under review): Instance Segmentation Network Based on Dynamic Routing and Topological Aggregation.
 
-> 📌 Patent numbers to be updated once verified.
+> 📌 Patent application numbers: CN202511339618.5 / CN202511331565.2
 
 ---
 
