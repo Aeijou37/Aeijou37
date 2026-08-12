@@ -1,179 +1,42 @@
-# Hi, I'm Guojie Li 👋
+# CV 算法工程笔记
 
-I am a Master's student in Information and Communication Engineering, focusing on **Computer Vision**, **Industrial AI**, **Instance Segmentation**, **3D Reconstruction**, and **Point Cloud Processing**.
+> 李国杰 · 计算机视觉算法工程师
+> 把简历上每个项目拆成「问题 → 基线 → 方法 → 消融 → 教训」五段式深挖。
+> 面试官看重的不是堆砌做过什么，而是能讲清**我为什么试这个、失败在哪、成功在哪**。
 
-I am interested in applying deep learning and visual perception algorithms to real-world industrial scenarios.
+## 为什么开这个 repo
 
----
+简历是一行行的成果，但成果背后是 29 组实验、一堆失效方案、若干深夜的"原来这条路不通"。
+这个 repo 把每段经历写成长文，留住**失败的实验和它失效的原因**——这才是面试时真正被追问、也真正值钱的部分。
 
-## 🔬 Research & Engineering Interests
+## 文章目录
 
-* Instance Segmentation
-* Object Detection
-* Single-view and Multi-view 3D Reconstruction
-* RGB-D Vision
-* Point Cloud Processing
-* Industrial Defect Detection (EBeam / X-ray)
-* Long-tail & Imbalanced Classification
-* Self-supervised & Multimodal Pre-training (DINOv2 / CLIP / SigLIP)
-* Lightweight Model Deployment
-* RAG-based Local Knowledge Systems
+| # | 项目 | 关键词 | 状态 |
+|---|---|---|---|
+| 01 | [EBeam 晶圆缺陷分类：从 97.79% 到 99.45% 的长尾破局](articles/01-cxmt-wafer-defect-classification.md) | 长尾 / LDAM / DINOv2 / SigLIP / 小数据 | 草稿 |
+| 02 | 工业X射线无损检测两阶段评片系统 | 小样本 / 超大图 / RF-DETR / 规则定性 | 待写 |
+| 03 | 制鞋机器人视觉系统 | 实例分割 / 三维重建 / 点云 / 轨迹落地 / 专利 | 待写 |
+| 04 | 基于 RAG 的本地学术知识库 Agent | LangChain / Chroma / Prompt Engineering | 待写 |
 
----
+## 统一写作结构
 
-## 🛠️ Technical Skills
+每篇文章都遵循同一套骨架，方便对照阅读：
 
-### Programming Languages
+1. **TL;DR** — 一段话讲清任务、基线、做法、结果、最值钱的结论。
+2. **问题定义** — 为什么这个任务"看起来普通、实际很坑"。
+3. **基线** — 把参照系打清楚，所有改进只改一个变量。
+4. **方法** — 拆成几条独立线索，避免"改一堆说不清谁起作用"。
+5. **消融实验** — 一张表把每条线索的贡献和失败都列出来。
+6. **教训与方法学沉淀** — 失败实验和成功实验同等重要，讲清适用边界。
+7. **可复现性** — NDA 部分脱敏，核心结论在公开数据集可复现。
+8. **面试预演 Q&A** — 预判追问，逼自己把"适用边界"讲清楚。
 
-* Python
-* C++
+## 脱敏与版权说明
 
-### Deep Learning Frameworks
+- 涉及公司数据/工艺的内容均已脱敏，核心方法学结论在公开数据集（CIFAR-LT / ImageNet-LT / MVTec AD / nuScenes 等）可复现。
+- 文章为个人技术笔记，不代表任何公司官方立场。
 
-* PyTorch
-* TensorFlow
-* MMDetection
-* Ultralytics YOLO
-* timm
+## 联系
 
-### Computer Vision
-
-* YOLO Series
-* SAM Series
-* Instance Segmentation
-* Object Detection
-* 3D Reconstruction
-* Point Cloud Feature Extraction
-* RGB-D Perception
-
-### Long-tail & Pre-training
-
-* LDAM Loss
-* DINOv2 / DINOv3
-* CLIP / SigLIP
-* Fine-tuning Strategies (Layer Freezing)
-
-### AI Agent & RAG
-
-* LangChain
-* Chroma
-* Local LLM Deployment
-* Prompt Engineering
-* Multi-document Retrieval
-
----
-
-## 💼 Experience
-
-* **CXMT** — Deep Learning Algorithm Intern (2026.07 - Present)
-* **iFLYTEK** — Industrial AI Algorithm Engineer Intern (2026.05 - 2026.07)
-* **Anhui Huipeng New Energy** — Engineering Intern (2023.08 - 2023.09)
-
----
-
-## 🚀 Selected Projects
-
-### Vision-based Shoe Sole Gluing Robot System
-
-This project focuses on low-cost and high-precision visual perception for automated shoe sole gluing production lines.
-
-Main work:
-
-* Designed lightweight instance segmentation models for shoe sole localization.
-* Built RGB-D based perception pipelines for industrial visual guidance.
-* Developed 3D reconstruction and point cloud processing methods.
-* Extracted smooth and continuous 3D gluing trajectories based on geometric analysis.
-* Optimized model inference for real-time industrial deployment.
-
-Results:
-
-* Achieved over 99% recognition accuracy.
-* Reached gluing trajectory positioning accuracy within 1 mm.
-* Completed the full pipeline from data collection, algorithm development, to production-line validation.
-* 2 granted patents (as first & second author).
-
-> 🔗 Code available upon request (university project, pending advisor approval)
-
----
-
-### Industrial X-ray Defect Detection and Analysis System
-
-This project focuses on automated film evaluation for industrial X-ray non-destructive testing.
-
-Main work:
-
-* Designed image preprocessing and enhancement methods for large-resolution X-ray images.
-* Improved small-defect detection under small-sample conditions.
-* Optimized RF-DETR detection and segmentation models (mAP +1.8%).
-* Built a rule-based pipeline from defect-level results to workpiece-level qualitative assessment.
-
-> ⚠️ Code unavailable due to company NDA. Happy to discuss the technical approach in detail.
-
----
-
-### Local Academic Knowledge Base QA Agent Based on RAG
-
-This project aims to build a local academic document question-answering system with optional retrieval enhancement.
-
-Main work:
-
-* Built document parsing, embedding, vector storage, and retrieval pipelines using LangChain and Chroma.
-* Implemented multi-document retrieval, MMR retrieval, query rewriting, and source tracing.
-* Designed constrained system prompts and post-processing mechanisms to improve response quality.
-* Supported local model deployment and multi-turn academic document QA.
-
-> 🔗 Repository: [rag-academic-qa-agent](https://github.com/Aeijou37/rag-academic-qa-agent)
-
----
-
-## 📚 Publications & Patents
-
-* Patent (First Inventor, published): Vision-based single-line laser shoe sole 3D gluing contour extraction system and method. [CN120852582A](https://patents.google.com/patent/CN120852582A)
-* Patent (Second Inventor, granted): Point cloud generation method for shoe sole gluing area based on RGB-D instance segmentation. [CN120823398B](https://patents.google.com/patent/CN120823398B)
-* Paper (First Author, under review): Instance Segmentation Network Based on Dynamic Routing and Topological Aggregation.
-
-> 📌 Patent application numbers: CN202511339618.5 / CN202511331565.2
-
----
-
-## 🎓 Education
-
-### Anhui University
-
-M.S. in Information and Communication Engineering
-Research Direction: Image Processing / Computer Vision
-2024.09 - 2027.06
-
-### Anhui University
-
-B.Eng. in Electronic Information Engineering
-2020.09 - 2024.06
-
-Graduation Project: Point-wise Rotation-invariant Feature Extraction for Point Clouds
-
----
-
-## 🔭 Currently Working On
-
-* EBeam wafer defect classification at CXMT (DINOv2 / SigLIP + LDAM, 99.45% accuracy)
-* Single-view 3D reconstruction for industrial trajectories
-* RAG-based academic QA agent (LangChain + Chroma)
-* Lightweight model deployment for edge devices
-
----
-
-## 📊 GitHub Stats
-
-<p>
-  <img height="160px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Aeijou37&layout=compact&theme=default" />
-  <img height="160px" src="https://github-readme-stats.vercel.app/api?username=Aeijou37&show_icons=true&theme=default" />
-</p>
-
----
-
-## 📫 Contact
-
-* GitHub: [Aeijou37](https://github.com/Aeijou37)
-* Email: [Leeguojiea@gmail.com](mailto:Leeguojiea@gmail.com)
-
-> Always open to discussions on industrial AI, computer vision, and RAG systems.
+- GitHub: [Aeijou37](https://github.com/Aeijou37)
+- Email: Leeguojiea@gmail.com
