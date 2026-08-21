@@ -1,23 +1,21 @@
 # Hi, I'm Guojie Li 👋
 
-I am a Master's student in Information and Communication Engineering, focusing on **Computer Vision**, **Industrial AI**, **Instance Segmentation**, **3D Reconstruction**, and **Point Cloud Processing**.
+I am a Master's student in Information and Communication Engineering, focusing on **Computer Vision**, **Industrial AI**, **3D Vision**, **Multimodal VLM**, **RAG Systems**, and **Edge Deployment**.
 
-I am interested in applying deep learning and visual perception algorithms to real-world industrial scenarios.
+I am interested in applying deep learning and visual perception algorithms to real-world industrial scenarios — from defect classification to 3D reconstruction to edge deployment.
 
 ---
 
 ## 🔬 Research & Engineering Interests
 
-- Instance Segmentation
-- Object Detection
-- Single-view and Multi-view 3D Reconstruction
-- RGB-D Vision
-- Point Cloud Processing
+- Instance Segmentation & Object Detection
+- 3D Reconstruction & Point Cloud Processing
+- RGB-D Vision & Camouflaged Segmentation
 - Industrial Defect Detection (EBeam / X-ray)
 - Long-tail & Imbalanced Classification
-- Self-supervised & Multimodal Pre-training (DINOv2 / CLIP / SigLIP)
-- Lightweight Model Deployment
+- Multimodal Vision-Language Models (VLM)
 - RAG-based Local Knowledge Systems
+- Edge Deployment (ONNX / INT8 Quantization)
 
 ---
 
@@ -43,7 +41,7 @@ I am interested in applying deep learning and visual perception algorithms to re
 - Instance Segmentation
 - Object Detection
 - 3D Reconstruction
-- Point Cloud Feature Extraction
+- Point Cloud Processing (PointNet)
 - RGB-D Perception
 
 ### Long-tail & Pre-training
@@ -51,15 +49,24 @@ I am interested in applying deep learning and visual perception algorithms to re
 - LDAM Loss
 - DINOv2 / DINOv3
 - CLIP / SigLIP
+- Knowledge Distillation
 - Fine-tuning Strategies (Layer Freezing)
 
 ### AI Agent & RAG
 
 - LangChain
 - Chroma
-- Local LLM Deployment
+- CLIP Cross-modal Retrieval
+- Local LLM Deployment (Qwen)
 - Prompt Engineering
-- Multi-document Retrieval
+- MMR Retrieval & Query Rewriting
+
+### Edge Deployment
+
+- PyTorch → ONNX Export
+- INT8 Dynamic Quantization
+- ONNX Runtime Inference
+- Model Lightweighting
 
 ---
 
@@ -73,8 +80,9 @@ EBeam wafer defect classification (5 classes, extreme long-tail — minority cla
 
 ### iFLYTEK — Industrial AI Algorithm Engineer Intern (2026.05 - 2026.07)
 
-Automated X-ray film evaluation for industrial NDT (small sample, ultra-large images, 10 defect classes). Built a two-stage pipeline: joint image enhancement for small-defect recall + RF-DETR optimization (mAP +1.8%), then a rule-based defect-distribution → workpiece-grade mapping. Owned the full loop from data augmentation to qualitative-rule validation.
+Industrial X-ray NDT automated film evaluation (~500 ultra-large images >2000×2000, 10 defect classes merged to 3 for viable baseline). Built a two-stage pipeline: Stage 1 — AHTF adaptive high-overlap tiling + YOLO26-Seg with SDE/DAF modules (B-class Mask Recall +21%, 0.238→0.288); Stage 2 — rule-based defect-distribution → workpiece-grade mapping. Early Mask R-CNN baseline (mAP 6.8%) and Boundary-aware Loss both abandoned after rigorous ablation. Settled methodology: **data strategy > model enhancement > loss function** for large-image small-defect tasks. FP16 deployable; Qt review software prototype delivered.
 
+> Deep-dive note: [Industrial X-ray Defect Detection — Two-Stage Pipeline](https://github.com/Aeijou37/cv-algorithm-notes/blob/main/articles/02-iflytek-xray-defect-detection.md)
 > ⚠️ Code unavailable due to company NDA. Happy to discuss the technical approach in detail.
 
 ### Anhui Huipeng New Energy — Engineering Intern (2023.08 - 2023.09)
@@ -85,56 +93,83 @@ Hands-on with new-energy commercial vehicle swappable-chassis battery systems, e
 
 ## 🚀 Selected Projects
 
+### Multimodal RAG Academic QA Agent
+
+A **multimodal** academic document question-answering agent. Upload papers → ask questions with **text or image** → get answers with source tracing. PDF charts/figures are automatically extracted, described by VLM, and indexed via CLIP for cross-modal retrieval.
+
+- **Multimodal**: PDF image extraction + VLM description + CLIP cross-modal encoding
+- **Retrieval**: MMR (similarity + diversity) + query rewriting (dual-path merge)
+- **Generation**: chat_template for instruction leakage prevention + constrained prompt + post-processing
+- **Source tracing**: Every answer includes document name + page/paragraph reference
+- Fully local, no external API needed
+
+> 🔗 Repository: [rag-academic-qa-agent](https://github.com/Aeijou37/rag-academic-qa-agent)
+
+---
+
+### Industrial Defect Multimodal Diagnosis Agent
+
+Upgrades traditional defect classification (output: class label) to natural language **diagnosis report generation** (output: type + location + severity + cause + recommendation). Based on CXMT defect classification experience.
+
+- **Data**: NEU-DET steel defect dataset + domain-knowledge-based templated diagnosis labels
+- **VLM**: Qwen-VL-Chat + LoRA fine-tuning (r=8)
+- **Hallucination control**: 3-layer protection (input quality check + constrained prompt + output post-processing)
+- **Evaluation**: 3D framework (classification accuracy + location accuracy + hallucination rate)
+- **Comparison experiment**: Pure classification (ResNet50) vs VLM diagnosis, proving business value of VLM diagnosis
+
+> 🔗 Repository: [defect-diagnosis-agent](https://github.com/Aeijou37/defect-diagnosis-agent)
+
+---
+
+### 3D Point Cloud Classification & Segmentation Demo
+
+PointNet-based 3D point cloud demo with Gradio interface. Upload a point cloud or pick a preset shape → get classification (ModelNet40) + part segmentation (ShapeNet Part) with 3D visualization.
+
+- **PointNet**: Max-pooling symmetric function for permutation invariance
+- **Classification**: ModelNet40 (40 object classes), Top-5 predictions
+- **Segmentation**: ShapeNet Part (16 categories, 50 parts), per-point labels
+- **Interactive**: Gradio web interface with 3D visualization
+- Colab-ready, HuggingFace deployable
+
+> 🔗 Repository: [pointcloud-demo](https://github.com/Aeijou37/pointcloud-demo)
+
+---
+
+### Edge Deployment Demo
+
+PyTorch → ONNX → INT8 quantization pipeline with inference benchmark. Compare 3 inference paths (PyTorch / ONNX FP32 / ONNX INT8) on accuracy, latency, and model size.
+
+- **Export**: PyTorch → ONNX (opset 17, dynamic batch)
+- **Quantization**: INT8 dynamic quantization (4x smaller, no accuracy loss)
+- **Benchmark**: Average / P50 / P95 / P99 latency + FPS comparison
+- **Results**: 13.27 MB → 3.41 MB (3.9x compression), Top-1 prediction consistency 100%
+- Colab-ready, HuggingFace deployable
+
+> 🔗 Repository: [edge-deployment-demo](https://github.com/Aeijou37/edge-deployment-demo)
+
+---
+
 ### Vision-based Shoe Sole Gluing Robot System
 
 This project focuses on low-cost and high-precision visual perception for automated shoe sole gluing production lines.
 
 Main work:
 
-- Designed lightweight instance segmentation models for shoe sole localization.
-- Built RGB-D based perception pipelines for industrial visual guidance.
-- Developed 3D reconstruction and point cloud processing methods.
-- Extracted smooth and continuous 3D gluing trajectories based on geometric analysis.
-- Optimized model inference for real-time industrial deployment.
+- Designed lightweight instance segmentation models for shoe sole localization (RGB-D camouflaged segmentation).
+- Built single-view 3D reconstruction with collaborative encoding architecture.
+- Developed multi-plane projection + geometric feature fusion for point cloud contour extraction.
+- Extracted smooth and continuous 3D gluing trajectories with GAN-based error correction.
+- Optimized model inference for real-time industrial deployment (3s/cycle).
 
 Results:
 
 - Achieved over 99% recognition accuracy.
 - Reached gluing trajectory positioning accuracy within 1 mm.
 - Completed the full pipeline from data collection, algorithm development, to production-line validation.
-- 2 granted patents (as first & second author).
+- 2 granted patents (as first & second inventor) + 1 paper under review (first author).
 
 > 🔗 Code available upon request (university project, pending advisor approval)
-
----
-
-### Industrial X-ray Defect Detection and Analysis System
-
-This project focuses on automated film evaluation for industrial X-ray non-destructive testing.
-
-Main work:
-
-- Designed image preprocessing and enhancement methods for large-resolution X-ray images.
-- Improved small-defect detection under small-sample conditions.
-- Optimized RF-DETR detection and segmentation models (mAP +1.8%).
-- Built a rule-based pipeline from defect-level results to workpiece-level qualitative assessment.
-
-> ⚠️ Code unavailable due to company NDA. Happy to discuss the technical approach in detail.
-
----
-
-### Local Academic Knowledge Base QA Agent Based on RAG
-
-This project aims to build a local academic document question-answering system with optional retrieval enhancement.
-
-Main work:
-
-- Built document parsing, embedding, vector storage, and retrieval pipelines using LangChain and Chroma.
-- Implemented multi-document retrieval, MMR retrieval, query rewriting, and source tracing.
-- Designed constrained system prompts and post-processing mechanisms to improve response quality.
-- Supported local model deployment and multi-turn academic document QA.
-
-> 🔗 Repository: [rag-academic-qa-agent](https://github.com/Aeijou37/rag-academic-qa-agent)
+> Deep-dive note: [Shoe-robot Vision: Instance Segmentation to 3D Trajectory](https://github.com/Aeijou37/cv-algorithm-notes/blob/main/articles/03-shoe-robot-vision.md)
 
 ---
 
@@ -145,7 +180,9 @@ I write each project as a long-form note structured as **Problem → Baseline �
 Repo: [**cv-algorithm-notes**](https://github.com/Aeijou37/cv-algorithm-notes)
 
 - [EBeam Wafer Defect Classification — A Long-Tail Breakthrough](https://github.com/Aeijou37/cv-algorithm-notes/blob/main/articles/01-cxmt-wafer-defect-classification.md) — 97.79% → 100.00% via LDAM + DINOv2/SigLIP + distillation; 8 failed strategies documented.
-- *Coming: iFLYTEK X-ray two-stage evaluation / Shoe-robot vision & 3D / RAG agent.*
+- [Industrial X-ray Defect Detection — Two-Stage Pipeline](https://github.com/Aeijou37/cv-algorithm-notes/blob/main/articles/02-iflytek-xray-defect-detection.md) — AHTF tiling + YOLO26-Seg SDE/DAF (B-class Recall +21%); Boundary Loss failed; data strategy > model > loss.
+- [Shoe-robot Vision: Instance Segmentation to 3D Trajectory](https://github.com/Aeijou37/cv-algorithm-notes/blob/main/articles/03-shoe-robot-vision.md) — RGB-D camouflaged segmentation → single-view 3D reconstruction → multi-plane projection trajectory extraction; 2 patents + 1 paper.
+- [Multimodal RAG Academic QA Agent](https://github.com/Aeijou37/cv-algorithm-notes/blob/main/articles/04-rag-academic-qa-agent.md) — MMR + query rewriting + chat_template + post-processing; retrieval quality > generation quality > prompt engineering.
 
 ---
 
@@ -179,16 +216,17 @@ Graduation Project: Point-wise Rotation-invariant Feature Extraction for Point C
 ## 🔭 Currently Working On
 
 - EBeam wafer defect classification at CXMT (LDAM + DINOv2/SigLIP + distillation, 100.00% accuracy)
-- Single-view 3D reconstruction for industrial trajectories
-- RAG-based academic QA agent (LangChain + Chroma)
-- Lightweight model deployment for edge devices
+- RAG agent optimization (Reranker + evaluation framework)
+- Point cloud demo training (ModelNet40 + ShapeNet Part)
+- Edge deployment pipeline (ONNX + INT8 quantization)
 
 ---
 
 ## 📊 GitHub Stats
 
-[![](https://camo.githubusercontent.com/49f1d5cd61fd8ce52f29f43fdf3bbe070c51d3484823b3fcff6c7184e0e6a352/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170692f746f702d6c616e6775616765732f3f757365726e616d653d4165696a6f753337266c61796f75743d636f6d70616374267468656d653d64656661756c74)](https://camo.githubusercontent.com/49f1d5cd61fd8ce52f29f43fdf3bbe070c51d3484823b3fcff6c7184e0e6a352/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170692f746f702d6c616e6775616765732f3f757365726e616d653d4165696a6f753337266c61796f75743d636f6d70616374267468656d653d64656661756c74)
-[![](https://camo.githubusercontent.com/d29801f1142c53a550eda52f0885da8ddfc0d1ea7ed7c3b723a0f56a998d81a0/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d4165696a6f7533372673686f775f69636f6e733d74727565267468656d653d64656661756c74)](https://camo.githubusercontent.com/d29801f1142c53a550eda52f0885da8ddfc0d1ea7ed7c3b723a0f56a998d81a0/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d4165696a6f7533372673686f775f69636f6e733d74727565267468656d653d64656661756c74)
+[![Top Languages](https://github-readme-stats.vercel.app/api/top-languages/?username=Aeijou37&layout=compact&theme=default)](https://github.com/Aeijou37)
+
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Aeijou37&show_icons=true&theme=default)](https://github.com/Aeijou37)
 
 ---
 
@@ -197,8 +235,4 @@ Graduation Project: Point-wise Rotation-invariant Feature Extraction for Point C
 - GitHub: [Aeijou37](https://github.com/Aeijou37)
 - Email: [Leeguojiea@gmail.com](mailto:Leeguojiea@gmail.com)
 
-> Always open to discussions on industrial AI, computer vision, and RAG systems.
-
-## About
-
-No description, website, or topics provided.
+> Always open to discussions on industrial AI, computer vision, RAG systems, and edge deployment.
